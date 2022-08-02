@@ -19,4 +19,16 @@ public class HelloController {
         return String.format("nice to meet you, %s!", name);
     }
 
+    @GetMapping("/greet")
+    @ResponseBody
+    public String greet() {
+        return "Greetings from Spring!";
+    }
+
+    @GetMapping("/greet/{name}")
+    @ResponseBody
+    public String greetToYou(@PathVariable String name) {
+        return "Greetings from Spring! " + name;
+    }
+
 }
