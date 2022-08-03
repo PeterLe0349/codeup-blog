@@ -13,6 +13,13 @@ public class PostController {
 
     @GetMapping("/show")
     public String show(Model model) {
+        model.addAttribute("post", new Post("title", "description"));
+        return "posts/show";
+    }
+
+    @GetMapping("/index")
+    public String index(Model model) {
+
         List<Post> posts = new ArrayList<>();
         posts.add(new Post("first", "some first stuff"));
         posts.add(new Post("second", "some second stuff"));
@@ -20,12 +27,6 @@ public class PostController {
 //        System.out.println(post.getTitle());
 //        System.out.println(post.getBody());
         model.addAttribute("posts", posts);
-        return "posts/show";
-    }
-
-    @GetMapping("/index")
-    public String index(Model model) {
-        model.addAttribute("post", new Post("title", "description"));
         return "posts/index";
     }
 

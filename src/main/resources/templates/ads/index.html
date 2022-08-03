@@ -1,0 +1,14 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/partials :: head('Index Page')" />
+<body>
+<nav th:replace="fragments/partials :: navbar" />
+<h1>Index Post Page</h1>
+<hr>
+<!--<div th:text="${ads}"></div>-->
+<div th:each="ad : ${ads}">
+    <h1 th:text="${ad.title}" >123</h1>
+    <h1 th:text="${ad.description}" >123</h1>
+<!--    <h4 th:text="${ad.body}" />-->
+    <br>
+</div>
+</body>

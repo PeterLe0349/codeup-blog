@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
+<head th:fragment="head(title)">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title th:text="${title}">Default Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- include stylesheets, etc here -->
@@ -22,10 +22,19 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/show">All Ad</a>
+                        <a class="nav-link" href="/show">Show Single Ad</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index">Single Ad</a>
+                        <a class="nav-link" href="/index">Post Index</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users">UserIndex</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ads">Ads Index</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/roll-dice">Dice Game</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

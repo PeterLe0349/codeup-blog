@@ -1,0 +1,13 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/partials :: head('User Page')" />
+<body>
+<nav th:replace="fragments/partials :: navbar" />
+<h1>Show Page</h1>
+<hr>
+<div th:each="user : ${users}">
+    <h1 th:text="${user.email}" />
+    <h4 th:text="${user.password}" />
+    <br>
+</div>
+
+</body>

@@ -21,9 +21,9 @@ public class DiceController {
         int ran = (int)Math.floor((Math.random()*6)+1);
         int aa = Integer.parseInt(a);
         if(aa==ran){
-            return "You rolled a " + a + ". Dice roll was: " + ran +"."  + "Congratulations you win!<br>";
+            return "You chose " + a + ". Dice roll was: " + ran +"."  + "Congratulations you win!<br>";
         }else {
-            return "You rolled a " + a + ". Dice roll was: " + ran +"."  + "Boohooo. You lose!<br>";
+            return "You chose " + a + ". Dice roll was: " + ran +"."  + "Boohooo. You lose!<br>";
         }
 
     }
