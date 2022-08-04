@@ -1,14 +1,23 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/partials :: head('show page')" />
+<head th:replace="fragments/partials :: head('show post page')" />
 <body>
 <nav th:replace="fragments/partials :: navbar" />
 
 
 <h1>Show Post Page</h1>
 <hr>
-<h1>Post title:<span th:text="${post.title}"></span> </h1>
-<h3>Description: <span th:text="${post.body}"></span></h3>
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <h1>Post title:<span th:text="${post.title}"></span> </h1>
+            <h2>Post ID:<span th:text="${post.id}"></span> </h2>
+            <h3>Description: <span th:text="${post.body}"></span></h3>
+        </div>
+
+    </div>
+</div>
+
 
 
 </body>

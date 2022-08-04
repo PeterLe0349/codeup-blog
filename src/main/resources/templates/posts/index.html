@@ -1,16 +1,21 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/partials :: head('index page')" />
+<head th:replace="fragments/partials :: head('Index Posts page')" />
 <body>
 <nav th:replace="fragments/partials :: navbar" />
 
-<h1>Index Page</h1>
+<h1>Index Post Page</h1>
 <hr>
-<div th:each="post : ${posts}">
-    <h1 th:text="${post.title}" />
-    <h4 th:text="${post.body}" />
-    <br>
+<div class="container">
+    <div class="row">
+        <div class="col-3 mx-3 my-3 card p-0" th:each="post : ${posts}">
+            <h6 th:text="${post.title}" />
+            <p th:text="${post.body}" />
+            <br>
+        </div>
+    </div>
 </div>
+
 
 
 

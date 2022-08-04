@@ -1,0 +1,27 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/partials :: head('Index Products page')" />
+<body>
+<nav th:replace="fragments/partials :: navbar" />
+
+<h1 class="text-center">Products Index Page</h1>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-3 my-2 mx-2 border border-dark p-0" th:each="product : ${products}">
+            <div class="card">
+                <h5 class="card-header px-3">Product Name: <span th:text="${product.name}"></span></h5>
+                <p class="class-text px-3" th:text="${product.price}" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+
+</html>

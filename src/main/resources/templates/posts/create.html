@@ -2,16 +2,24 @@
 <head th:replace="fragments/partials :: head('Post Create')" />
 <body>
 <nav th:replace="fragments/partials :: navbar" />
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form action="/posts/create" method="post">
+                <label class="form-label" for="title">Title</label>
+                <input type="text" name="title" id="title" class="field form-control" />
+                <br>
+                <br>
+                <textarea id="description" class="form-control" name="description" rows="4" cols="50" placeholder="description"></textarea>
+                <br>
+                <button class="btn btn-secondary">Submit post</button>
+            </form>
 
-<form action="/posts/create" method="post">
-    <label for="title">Title</label>
-    <input type="text" name="title" id="title" class="field" />
-    <br>
-    <br>
-    <textarea id="description" name="description" rows="4" cols="50" placeholder="description"></textarea>
-    <br>
-    <button>Submit post</button>
-</form>
+        </div>
+    </div>
+</div>
+
+
 
 </body>
 </html>

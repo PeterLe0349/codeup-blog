@@ -4,10 +4,16 @@
 <nav th:replace="fragments/partials :: navbar" />
 <h1>Show Page</h1>
 <hr>
-<div th:each="user : ${users}">
-    <h1 th:text="${user.email}" />
-    <h4 th:text="${user.password}" />
-    <br>
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-3 my-3 card p-0"  th:each="user : ${users}">
+            <h5 th:text="${user.email}" />
+            <h6 th:text="${user.password}" />
+            <br>
+        </div>
+
+    </div>
 </div>
+
 
 </body>

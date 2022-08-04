@@ -1,15 +1,23 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.repositories.PostRepository;
+import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class PostController {
+    private final PostRepository postDao;
+    private final UserRepository userDao;
+
+    public PostController(PostRepository postDao, UserRepository userDao) {
+        this.postDao = postDao;
+        this.userDao = userDao;
+    }
 
     @GetMapping("/show")
     public String show(Model model) {
@@ -20,9 +28,7 @@ public class PostController {
     @GetMapping("/index")
     public String index(Model model) {
 
-        List<Post> posts = new ArrayList<>();
-        posts.add(new Post("first", "some first stuff"));
-        posts.add(new Post("second", "some second stuff"));
+        List<Post> posts = postDao.findAll();
 //        System.out.println(title);
 //        System.out.println(post.getTitle());
 //        System.out.println(post.getBody());
@@ -31,28 +37,32 @@ public class PostController {
     }
 
     @RequestMapping(path = "/posts", method = RequestMethod.GET)
-    @ResponseBody
     public String indexPage() {
-        return "This is the index page"; //retrieve data id and post it
+        return "posts/index";
     }
 
 
-    @RequestMapping(path = "/posts/{indexnum}", method = RequestMethod.GET)
-    @ResponseBody
-    public String indexPage(@PathVariable int indexnum) {
-        return "Show post: " + indexnum; //retrieve data id and post it
+    @RequestMapping(path = "/show/{indexnum}", method = RequestMethod.GET)
+    public String showPost(@PathVariable int indexnum, Model model) {
+        model.addAttribute("post", postDao.getById((long)indexnum));
+        return "posts/show";
     }
 
-    @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
-    @ResponseBody
-    public String createPostForm() {
-        return "This is the form page for creating post <form action=\"/posts/create\" method=\"post\"><button type=\"submit\">Submit</button></form>"; //retrieve data id and post it
+    @GetMapping("/posts/create")
+    public String createPost() {
+        return "/posts/create";
     }
 
-    @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-    @ResponseBody
-    public String createPostAction() {
-        return "Process the created form values"; //retrieve data id and post it
+
+    @PostMapping("/posts/create")
+    public String createPostPart2(@RequestParam(name = "title") String title,@RequestParam(name = "description") String description, Model model) {
+        Post post = new Post(title, description, userDao.getById(1L));
+        postDao.save(post);
+//        System.out.println(title);
+//        System.out.println(post.getTitle());
+//        System.out.println(post.getBody());
+        model.addAttribute("post", post);
+        return "posts/show";
     }
 
 

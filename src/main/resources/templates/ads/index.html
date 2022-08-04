@@ -1,14 +1,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/partials :: head('Index Page')" />
+<head th:replace="fragments/partials :: head('Index Ads Page')" />
 <body>
 <nav th:replace="fragments/partials :: navbar" />
-<h1>Index Post Page</h1>
+<h1>Index Ads Page</h1>
 <hr>
 <!--<div th:text="${ads}"></div>-->
-<div th:each="ad : ${ads}">
-    <h1 th:text="${ad.title}" >123</h1>
-    <h1 th:text="${ad.description}" >123</h1>
-<!--    <h4 th:text="${ad.body}" />-->
-    <br>
+<div class="container">
+    <div class="row justify-content-center" >
+            <div class="col-3 mx-3 my-3 card border border-dark p-0" th:each="ad : ${ads}">
+                <h5 class="card-title bg-secondary" th:text="${ad.title}" >123</h5>
+                <p class="card-text" th:text="${ad.description}" >123</p>
+                <!--    <h4 th:text="${ad.body}" />-->
+                <br>
+            </div>
+    </div>
 </div>
+
 </body>

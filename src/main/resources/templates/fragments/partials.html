@@ -21,31 +21,38 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/show">Show Single Ad</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Post
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/index">Post Index</a></li>
+                            <li><a class="dropdown-item" href="/posts/create">Create Post</a></li>
+                            <li><a class="dropdown-item" href="/show">Show Single Post</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/index">Post Index</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ads
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/ads">Ads Index</a></li>
+                            <li><a class="dropdown-item" href="/ads/create">Create Ad</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/products">Products Index</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/users">UserIndex</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ads">Ads Index</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/roll-dice">Dice Game</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Sort
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">By 1</a></li>
-                            <li><a class="dropdown-item" href="#">By 2</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">

@@ -3,6 +3,7 @@ package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Ad;
 import com.codeup.springblog.models.User;
+import com.codeup.springblog.repositories.AdRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,6 +50,6 @@ class AdController {
 //        System.out.println(post.getTitle());
 //        System.out.println(post.getBody());
         model.addAttribute("ads", adDao.findAll());
-        return "ads/index";
+        return "redirect:/ads";
     }
 }
