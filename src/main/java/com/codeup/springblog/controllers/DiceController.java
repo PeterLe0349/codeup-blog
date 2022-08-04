@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class DiceController {
 
@@ -14,8 +17,11 @@ public class DiceController {
 
     @RequestMapping(path = "/roll-dice/{number1}", method = RequestMethod.GET)
     public String rollDice(@PathVariable String number1, Model model) {
-        String message = rollRandom(number1) + rollRandom(number1) +rollRandom(number1);
-        model.addAttribute("message", message);
+        List<String> messages = new ArrayList<>();
+        messages.add(rollRandom(number1));
+        messages.add(rollRandom(number1));
+        messages.add(rollRandom(number1));
+        model.addAttribute("messages", messages);
         return "roll-dice";
     }
 
@@ -23,9 +29,9 @@ public class DiceController {
         int ran = (int)Math.floor((Math.random()*6)+1);
         int aa = Integer.parseInt(a);
         if(aa==ran){
-            return "You chose " + a + ". Dice roll was: " + ran +"."  + "Congratulations you win!\n";
+            return "You chose " + a + ". Dice roll was: " + ran +"."  + "  Congratulations you win!\n";
         }else {
-            return "You chose " + a + ". Dice roll was: " + ran +"."  + "Boohooo. You lose!\n";
+            return "You chose " + a + ". Dice roll was: " + ran +"."  + "  Boohoo! You lose!\n";
         }
 
     }

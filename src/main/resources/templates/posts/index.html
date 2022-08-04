@@ -9,6 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3 mx-3 my-3 card p-0" th:each="post : ${posts}">
+            <a th:href="@{/show/{id}(id=${post.id})}">view</a>
             <h6 th:text="${post.title}" />
             <p th:text="${post.body}" />
             <br>
