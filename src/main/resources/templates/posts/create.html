@@ -5,14 +5,17 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <form action="/posts/create" method="post">
-                <label class="form-label" for="title">Title</label>
-                <input type="text" name="title" id="title" class="field form-control" />
-                <br>
-                <br>
-                <textarea id="description" class="form-control" name="description" rows="4" cols="50" placeholder="description"></textarea>
-                <br>
-                <button class="btn btn-secondary">Submit post</button>
+            <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+                Title:
+                <input th:field="*{title}" />
+                <br />
+                <label for="userid">user id:</label>
+                <input type="number" id="userid" name="userid">
+                <br />
+                Description:
+                <input th:field="*{body}" />
+                <br />
+                <input type="submit" />
             </form>
 
         </div>

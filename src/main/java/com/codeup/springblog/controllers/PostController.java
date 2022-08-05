@@ -48,21 +48,35 @@ public class PostController {
         return "posts/show";
     }
 
+    @RequestMapping(path = "/posts/{id}/edit", method = RequestMethod.GET)
+    public String editPost(@PathVariable long id, Model model) {
+        model.addAttribute("post", postDao.getById(id));
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String editPostPart2(@RequestParam(name="title") String title, @RequestParam(name="body") String body, @RequestParam(name="id") long id){
+        System.out.println(title + body + id);
+        Post post = postDao.getById(id);
+        post.setTitle(title);
+        post.setBody(body);
+        postDao.save(post);
+        return "redirect:/index";
+    }
+
     @GetMapping("/posts/create")
-    public String createPost() {
+    public String createPost(Model model) {
+        model.addAttribute("post", new Post());
         return "/posts/create";
     }
 
 
     @PostMapping("/posts/create")
-    public String createPostPart2(@RequestParam(name = "title") String title,@RequestParam(name = "description") String description, Model model) {
-        Post post = new Post(title, description, userDao.getById(1L));
+    public String createPostPart2(@ModelAttribute Post post, @RequestParam(name = "userid") long userid) {
+        post.setUser(userDao.getById(userid));
         postDao.save(post);
-//        System.out.println(title);
-//        System.out.println(post.getTitle());
-//        System.out.println(post.getBody());
-        model.addAttribute("post", post);
-        return "posts/show";
+        return "redirect:/index";
+
     }
 
 
