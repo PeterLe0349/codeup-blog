@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/partials :: head('Books Index Page')" />
+<body>
+<nav th:replace="fragments/partials :: navbar" />
+<h1>Index Ads Page</h1>
+<hr>
+<!--<div th:text="${ads}"></div>-->
+<div class="container">
+    <div class="row justify-content-center" >
+        <div class="col-3 mx-3 my-3 card border border-dark p-0" th:each="book : ${books}">
+            <form action="/books/edit" method="post">
+                <p>Book #<span th:text="${book.id}"></span></p>
+                <p>Title: <span th:text="${book.title}"></span></p>
+                <ul>
+                    <li th:text="${genre.name}"   th:each="genre: ${book.genres}" ></li>
+                </ul>
+                <input type="hidden" th:value="${book.id}" name="bookid">
+                <select name="genre" id="genre">
+                    <option th:value="${genre.id}" th:text="${genre.name}" th:each="genre: ${genres}"></option>
+                </select>
+                <input type="submit">
+            </form>
+
+            <br>
+        </div>
+    </div>
+</div>
+
+</body>

@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/partials :: head('Books Index Page')" />
+<body>
+<nav th:replace="fragments/partials :: navbar" />
+<h1>Index Ads Page</h1>
+<hr>
+<!--<div th:text="${ads}"></div>-->
+<div class="container">
+    <div class="row justify-content-center" >
+            <div class="col-3 mx-3 my-3 card border border-dark p-0" th:each="book : ${books}">
+                <h5 class="card-title bg-secondary" th:text="${book.title}" >123</h5>
+                <ul>
+                    <p>Book #<span th:text="${book.id}"></span></p>
+                    <li th:text="${genre.name}"   th:each="genre: ${book.genres}" ></li>
+                </ul>
+
+                <!--    <h4 th:text="${ad.body}" />-->
+                <br>
+            </div>
+    </div>
+</div>
+
+</body>
