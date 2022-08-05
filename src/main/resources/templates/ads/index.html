@@ -10,6 +10,7 @@
             <div class="col-3 mx-3 my-3 card border border-dark p-0" th:each="ad : ${ads}">
                 <h5 class="card-title bg-secondary" th:text="${ad.title}" >123</h5>
                 <p class="card-text" th:text="${ad.description}" >123</p>
+                <p>Posted by: <span th:text="${ad.user.email}"></span> </p>
                 <!--    <h4 th:text="${ad.body}" />-->
                 <br>
             </div>

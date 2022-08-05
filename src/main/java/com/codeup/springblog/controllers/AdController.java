@@ -4,6 +4,7 @@ package com.codeup.springblog.controllers;
 import com.codeup.springblog.models.Ad;
 import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.AdRepository;
+import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,11 @@ class AdController {
     // These two next steps are often called dependency injection, where we create a Repository instance and initialize it in the controller class constructor.
 
     private final AdRepository adDao;
+    private final UserRepository userDao;
 
-    public AdController(AdRepository adDao) {
+    public AdController(AdRepository adDao, UserRepository userDao) {
         this.adDao = adDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/ads")
