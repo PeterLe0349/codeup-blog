@@ -9,8 +9,8 @@
 <div class="container">
     <div class="row">
         <div class="col-3 mx-3 my-3 card p-0" th:each="post : ${posts}">
-            <a th:href="@{/show/{id}(id=${post.id})}">view</a>
-            <a th:href="'/posts/' + ${post.id} + '/edit'">edit</a>
+            <a class="btn btn-secondary"  th:href="@{/show/{id}(id=${post.id})}">view</a>
+            <a class="btn btn-info"   th:href="'/posts/' + ${post.id} + '/edit'">edit</a>
             <h6 th:text="${post.title}" />
             <p th:text="${post.body}" />
             <p>Posted by: <span th:text="${post.user.email}"></span></p>

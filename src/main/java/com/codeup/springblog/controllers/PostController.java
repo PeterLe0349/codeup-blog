@@ -67,6 +67,7 @@ public class PostController {
     @GetMapping("/posts/create")
     public String createPost(Model model) {
         model.addAttribute("post", new Post());
+        model.addAttribute("users", userDao.findAll());
         return "/posts/create";
     }
 
