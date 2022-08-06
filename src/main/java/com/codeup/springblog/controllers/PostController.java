@@ -1,12 +1,10 @@
 package com.codeup.springblog.controllers;
 
-import com.codeup.springblog.models.Book;
-import com.codeup.springblog.models.Genre;
-import com.codeup.springblog.models.Post;
-import com.codeup.springblog.models.Tag;
+import com.codeup.springblog.models.*;
 import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.TagRepository;
 import com.codeup.springblog.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,15 +26,16 @@ public class PostController {
         this.emailService = emailService;
     }
 
-    @GetMapping("/show")
-    public String show(Model model) {
-        model.addAttribute("post", new Post("title", "description"));
-        return "posts/show";
-    }
+//    @GetMapping("/show")
+//    public String show(Model model) {
+//        model.addAttribute("post", new Post("title", "description"));
+//        return "posts/show";
+//    }
 
     @GetMapping("/index")
     public String index(Model model) {
-
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        System.out.println(principal.getClass());
         List<Post> posts = postDao.findAll();
 //        System.out.println(title);
 //        System.out.println(post.getTitle());
