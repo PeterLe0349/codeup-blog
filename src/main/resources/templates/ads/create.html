@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form action="/ads/create" method="post">
+            <form   th:action="@{/ads/create}" method="post">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" name="title" id="title" class="field form-control" />
                 <br>

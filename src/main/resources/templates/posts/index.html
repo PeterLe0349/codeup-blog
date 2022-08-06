@@ -10,13 +10,12 @@
     <div class="row">
 <!--        show tags selection-->
         <div class="col-12">
-            <form action="/posts/tag" method ="post">
+            <form th:action="@{/posts/chooseTag}" method ="post">
                 <h3>View by tag category:</h3>
                 <select class="form-control" name="tagname" id="tagname">
                     <option th:value="${tag.name}" th:text="${tag.name}" th:each="tag: ${tags}"></option>
                 </select>
                 <input type="submit">
-
             </form>
         </div>
         <div class="col-3 mx-3 my-3 card p-0" th:each="post : ${posts}">

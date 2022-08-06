@@ -110,14 +110,16 @@ public class PostController {
         return "posts/showByTag";
     }
 
-    @PostMapping("/posts/tag")
+    @PostMapping("/posts/chooseTag")
     public String tagPostsSelect(@RequestParam(name="tagname") String tagname, Model model){
+        System.out.println("i'm in tag search");
         List<Tag> tags = tagDao.searchByTagLike(tagname);
         List<Post> posts = new ArrayList<>();
         if(!tags.isEmpty()){
             posts = tags.get(0).getPosts();
         }
         model.addAttribute("posts", posts);
+        System.out.println("passed add model");
         return "posts/showByTag";
     }
 
