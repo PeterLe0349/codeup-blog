@@ -13,7 +13,7 @@
             <a class="btn btn-info"   th:href="'/posts/' + ${post.id} + '/edit'">edit</a>
             <h6 th:text="${post.title}" />
             <p th:text="${post.body}" />
-            <p>Posted by: <span th:text="${post.user.email}"></span></p>
+            <p>Posted by user# <span th:text="${post.user.id}"></span></p>
             <br>
         </div>
     </div>

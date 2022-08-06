@@ -1,6 +1,7 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Book;
+import com.codeup.springblog.models.Genre;
 import com.codeup.springblog.repositories.BookRepository;
 import com.codeup.springblog.repositories.GenreRepository;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class BookController {
@@ -47,6 +51,17 @@ public class BookController {
         book.getGenres().add(genreDao.getById(genreid));
         bookDao.save(book);
         return "redirect:/books";
+    }
+
+    @GetMapping("/books/genre/{genre}")
+    public String genreBook(@PathVariable String genre, Model model){
+        List<Genre> gens = genreDao.searchByGenreLike(genre);
+        List<Book> books = new ArrayList<>();
+        if(!gens.isEmpty()){
+            books = gens.get(0).getBooks();
+        }
+        model.addAttribute("books", books);
+        return "books/indexByGenre";
     }
 
 

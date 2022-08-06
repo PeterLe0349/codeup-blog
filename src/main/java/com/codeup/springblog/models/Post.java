@@ -2,6 +2,7 @@ package com.codeup.springblog.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="posts")
@@ -20,6 +21,14 @@ public class Post implements Serializable {
     @ManyToOne
     @JoinColumn (name = "user_id")
     private User user;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="posts_tags",
+            joinColumns = {@JoinColumn(name="post_id")},
+            inverseJoinColumns = {@JoinColumn(name="tag_id")}
+    )
+    private List<Tag> tags;
 
     public Post(){
     }
