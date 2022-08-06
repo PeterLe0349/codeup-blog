@@ -19,11 +19,13 @@ public class PostController {
     private final PostRepository postDao;
     private final UserRepository userDao;
     private final TagRepository tagDao;
+    private final EmailService emailService;
 
-    public PostController(PostRepository postDao, UserRepository userDao, TagRepository tagDao) {
+    public PostController(PostRepository postDao, UserRepository userDao, TagRepository tagDao, EmailService emailService) {
         this.postDao = postDao;
         this.userDao = userDao;
         this.tagDao = tagDao;
+        this.emailService = emailService;
     }
 
     @GetMapping("/show")
@@ -92,6 +94,7 @@ public class PostController {
         post.setTags(new ArrayList<>());
         post.getTags().add(tagDao.getById(tagid));
         postDao.save(post);
+        emailService.prepareAndSend(post,post.getTitle(), post.getBody());
         return "redirect:/index";
 
     }

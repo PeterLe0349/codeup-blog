@@ -12,10 +12,10 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length=50)
+    @Column(length=50, unique = true)
     private String username;
 
-    @Column(length=100)
+    @Column(length=100, unique = true)
     private String email;
 
     @Column(length=100)
@@ -26,6 +26,13 @@ public class User implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
 
     public User(){
 

@@ -13,6 +13,10 @@
                 <br>
                 <textarea id="description" name="description" rows="4" cols="50" placeholder="description" class="form-control"></textarea>
                 <br>
+                <label for="userid" class="form-label">Ad creator:</label>
+                <select class="form-control" name="userid" id="userid">
+                    <option th:each="user: ${users}"  th:value="${user.id}" th:text="${user.username}"></option>
+                </select>
                 <button>Submit post</button>
             </form>
         </div>
