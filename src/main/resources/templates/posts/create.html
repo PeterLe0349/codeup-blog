@@ -19,6 +19,12 @@
                 Description:
                 <input class="form-control"  th:field="*{body}" />
                 <br />
+                <label class="form-label" for="tagid">Tags:</label>
+                <select class="form-control" name="tagid" id="tagid">
+                    <option th:value="${tag.id}" th:text="${tag.name}" th:each="tag: ${tags}"></option>
+                </select>
+
+
                 <input type="submit" />
             </form>
 

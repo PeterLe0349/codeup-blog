@@ -15,6 +15,13 @@
                 <input type="text" id="title" name="title" th:value="${post.title}">
                 <label for="body">Body</label>
                 <input type="text" id="body" name="body" th:value="${post.body}">
+                <label class="form-label" for="tagid">Tags:</label>
+                <ul>
+                    <li th:text="${tag.name}" th:each="tag: ${post.tags}"></li>
+                </ul>
+                <select class="form-control" name="tagid" id="tagid">
+                    <option th:value="${tag.id}" th:text="${tag.name}" th:each="tag: ${tags}"></option>
+                </select>
                 <input type="hidden" id="id" name="id" th:value="${post.id}">
                 <input type="submit">
 

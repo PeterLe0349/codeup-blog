@@ -44,6 +44,13 @@ public class Post implements Serializable {
         this.user = user;
     }
 
+    public Post(String title, String body, User user, List<Tag> tags) {
+        this.title = title;
+        this.body = body;
+        this.user = user;
+        this.tags = tags;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -74,6 +81,14 @@ public class Post implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 }
 
