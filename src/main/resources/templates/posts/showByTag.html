@@ -1,0 +1,32 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/partials :: head('Index Posts page')" />
+<body>
+<nav th:replace="fragments/partials :: navbar" />
+
+<h1>Index Post Page</h1>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-3 mx-3 my-3 card p-0" th:each="post : ${posts}">
+            <a class="btn btn-secondary"  th:href="@{/show/{id}(id=${post.id})}">view</a>
+            <a class="btn btn-info"   th:href="'/posts/' + ${post.id} + '/edit'">edit</a>
+            <h6 th:text="${post.title}" />
+            <p th:text="${post.body}" />
+            <ul>
+                Tags:
+                <li th:text="${tag.name}" th:each="tag: ${post.tags}"></li>
+            </ul>
+            <p>Posted by user# <span th:text="${post.user.id}"></span></p>
+            <br>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+
+</html>

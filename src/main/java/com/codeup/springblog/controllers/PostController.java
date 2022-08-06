@@ -1,6 +1,9 @@
 package com.codeup.springblog.controllers;
 
+import com.codeup.springblog.models.Book;
+import com.codeup.springblog.models.Genre;
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.models.Tag;
 import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.TagRepository;
 import com.codeup.springblog.repositories.UserRepository;
@@ -90,6 +93,17 @@ public class PostController {
         postDao.save(post);
         return "redirect:/index";
 
+    }
+
+    @GetMapping("/posts/tag/{tag}")
+    public String tagPosts(@PathVariable String tag, Model model){
+        List<Tag> tags = tagDao.searchByTagLike(tag);
+        List<Post> posts = new ArrayList<>();
+        if(!tags.isEmpty()){
+            posts = tags.get(0).getPosts();
+        }
+        model.addAttribute("posts", posts);
+        return "posts/showByTag";
     }
 
 
