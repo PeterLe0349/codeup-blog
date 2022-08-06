@@ -8,6 +8,17 @@
 <hr>
 <div class="container">
     <div class="row">
+<!--        show tags selection-->
+        <div class="col-12">
+            <form action="/posts/tag" method ="post">
+                <h3>View by tag category:</h3>
+                <select class="form-control" name="tagname" id="tagname">
+                    <option th:value="${tag.name}" th:text="${tag.name}" th:each="tag: ${tags}"></option>
+                </select>
+                <input type="submit">
+
+            </form>
+        </div>
         <div class="col-3 mx-3 my-3 card p-0" th:each="post : ${posts}">
             <a class="btn btn-secondary"  th:href="@{/show/{id}(id=${post.id})}">view</a>
             <a class="btn btn-info"   th:href="'/posts/' + ${post.id} + '/edit'">edit</a>

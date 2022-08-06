@@ -39,6 +39,7 @@ public class PostController {
 //        System.out.println(title);
 //        System.out.println(post.getTitle());
 //        System.out.println(post.getBody());
+        model.addAttribute("tags", tagDao.findAll());
         model.addAttribute("posts", posts);
         return "posts/index";
     }
@@ -105,6 +106,19 @@ public class PostController {
         model.addAttribute("posts", posts);
         return "posts/showByTag";
     }
+
+    @PostMapping("/posts/tag")
+    public String tagPostsSelect(@RequestParam(name="tagname") String tagname, Model model){
+        List<Tag> tags = tagDao.searchByTagLike(tagname);
+        List<Post> posts = new ArrayList<>();
+        if(!tags.isEmpty()){
+            posts = tags.get(0).getPosts();
+        }
+        model.addAttribute("posts", posts);
+        return "posts/showByTag";
+    }
+
+
 
 
 
