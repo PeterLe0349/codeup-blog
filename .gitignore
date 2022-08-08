@@ -31,5 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
-
-src/main/resources/application.propertiessendgrid.env
+src/main/resources/application.properties
+sendgrid.env
