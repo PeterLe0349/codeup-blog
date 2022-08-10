@@ -46,14 +46,14 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/ads") // anyone can see the home and the ads pages
+                .antMatchers("/", "/ads","/products") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
                 .antMatchers(
                         "/send-text","/api/send-text","/posts/create", "posts/edit","/ads/create", // only authenticated users can create ads
-                        "/ads/{id}/edit" // only authenticated users can edit ads
+                        "/ads/{id}/edit", "/products/create"// only authenticated users can edit ads
                 )
                 .authenticated()
         ;

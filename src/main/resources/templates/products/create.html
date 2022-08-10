@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/partials :: head('Product Create')" />
+<body>
+<nav th:replace="fragments/partials :: navbar" />
+<div class="container">
+    <h1>Create Page</h1>
+    <div sec:authorize="isAuthenticated()">
+        This content is only shown to authenticated users.
+
+        User ID: <span th:text="${#authentication.principal.id}"/>
+        Username: <span th:text="${#authentication.principal.username}"/>
+        Email: <span th:text="${#authentication.principal.email}"/>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form th:action="@{/products/create}" th:method="post" th:object="${product}">
+                Name:
+                <input class="form-control" name="name" th:field="*{name}" />
+                <br />
+<!--                <label for="userid" class="form-label">Post creator:</label>-->
+<!--                <select class="form-control" name="userid" id="userid">-->
+<!--                    <option   th:value="${#authentication.principal.id}" th:text="${#authentication.principal.username}"></option>-->
+<!--                </select>-->
+<!--                <label for="userid">user id:</label>-->
+<!--                <input type="number" id="userid" name="userid">-->
+                <br />
+                Price:
+                <input class="form-control" name="price"  th:field="*{price}" />
+                <br />
+                <input type="submit" />
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
